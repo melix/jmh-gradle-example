@@ -8,16 +8,14 @@ targetCompatibility = 1.7
 
 buildscript {
    repositories {
-      mavenLocal()
       jcenter()
    }
    dependencies {
-      classpath 'me.champeau.gradle:jmh-gradle-plugin:0.1-SNAPSHOT'
+      classpath 'me.champeau.gradle:jmh-gradle-plugin:0.1'
    }
 }
 
 repositories {
-   mavenLocal()
    jcenter()
 }
 
