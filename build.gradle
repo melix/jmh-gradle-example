@@ -1,0 +1,29 @@
+apply plugin: 'java'
+
+group = 'me.champeau.sample'
+version = '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+buildscript {
+   repositories {
+      mavenLocal()
+      jcenter()
+   }
+   dependencies {
+      classpath 'me.champeau.gradle:jmh-gradle-plugin:0.1-SNAPSHOT'
+   }
+}
+
+repositories {
+   mavenLocal()
+   jcenter()
+}
+
+apply plugin: 'me.champeau.gradle.jmh'
+
+jmh {
+    include = 'org\\.openjdk\\.jmh\\.samples\\.JMHSample_01_HelloWorld.*'
+    humanOutputFile = null
+}
