@@ -1,27 +1,50 @@
-apply plugin: 'java'
-
-group = 'me.champeau.sample'
-version = '1.0-SNAPSHOT'
-
-sourceCompatibility = 1.7
-targetCompatibility = 1.7
-
-buildscript {
-   repositories {
-      jcenter()
-   }
-   dependencies {
-      classpath 'me.champeau.gradle:jmh-gradle-plugin:0.1'
-   }
+plugins {
+  id "me.champeau.gradle.jmh" version "0.4.2"
 }
 
-repositories {
-   jcenter()
+allprojects {
+    apply plugin: 'java'
+    apply plugin: 'idea'
+
+    group = 'me.champeau.sample'
+    version = '1.0-SNAPSHOT'
+
+    sourceCompatibility = 1.7
+    targetCompatibility = 1.7
+
+    repositories {
+        jcenter()
+    }
 }
+
 
 apply plugin: 'me.champeau.gradle.jmh'
 
 jmh {
     include = 'org\\.openjdk\\.jmh\\.samples\\.JMHSample_01_HelloWorld.*'
     humanOutputFile = null
+    warmupIterations = 1
+    iterations = 1
+}
+
+// it is possible to tweak the jmhJar task directly
+jmhJar.baseName = 'custom'
+
+def lastJmh = tasks.jmh
+
+subprojects {
+    apply plugin: 'me.champeau.gradle.jmh'
+
+    jmh {
+        include = 'org\\.openjdk\\.jmh\\.samples\\.JMHSample_01_HelloWorld.*'
+        humanOutputFile = null
+        warmupIterations = 1
+        iterations = 1
+    }
+
+    tasks.jmh {
+        mustRunAfter lastJmh
+    }
+
+    lastJmh = tasks.jmh
 }
