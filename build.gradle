@@ -1,5 +1,5 @@
 plugins {
-  id "me.champeau.gradle.jmh" version "0.4.2"
+  id "me.champeau.gradle.jmh" version "0.4.3"
 }
 
 allprojects {
@@ -30,8 +30,6 @@ jmh {
 // it is possible to tweak the jmhJar task directly
 jmhJar.baseName = 'custom'
 
-def lastJmh = tasks.jmh
-
 subprojects {
     apply plugin: 'me.champeau.gradle.jmh'
 
@@ -42,9 +40,4 @@ subprojects {
         iterations = 1
     }
 
-    tasks.jmh {
-        mustRunAfter lastJmh
-    }
-
-    lastJmh = tasks.jmh
 }
