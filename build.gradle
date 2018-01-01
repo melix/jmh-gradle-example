@@ -1,5 +1,5 @@
 plugins {
-  id "me.champeau.gradle.jmh" version "0.4.5"
+    id "me.champeau.gradle.jmh" version "0.4.5"
 }
 
 allprojects {
@@ -21,7 +21,7 @@ allprojects {
 apply plugin: 'me.champeau.gradle.jmh'
 
 jmh {
-    include = 'org\\.openjdk\\.jmh\\.samples\\.JMHSample_01_HelloWorld.*'
+    include = ['org\\.openjdk\\.jmh\\.samples\\.JMHSample_01_HelloWorld.*']
     humanOutputFile = null
     warmupIterations = 1
     iterations = 1
@@ -34,7 +34,7 @@ subprojects {
     apply plugin: 'me.champeau.gradle.jmh'
 
     jmh {
-        include = 'org\\.openjdk\\.jmh\\.samples\\.JMHSample_01_HelloWorld.*'
+        include = ['org\\.openjdk\\.jmh\\.samples\\.JMHSample_01_HelloWorld.*']
         humanOutputFile = null
         warmupIterations = 1
         iterations = 1
