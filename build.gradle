@@ -1,5 +1,5 @@
 plugins {
-  id "me.champeau.gradle.jmh" version "0.4.6"
+  id "me.champeau.gradle.jmh" version "0.5.0"
 }
 
 allprojects {
@@ -9,8 +9,8 @@ allprojects {
     group = 'me.champeau.sample'
     version = '1.0-SNAPSHOT'
 
-    sourceCompatibility = 1.7
-    targetCompatibility = 1.7
+    sourceCompatibility = JavaVersion.VERSION_12
+    targetCompatibility = JavaVersion.VERSION_12
 
     repositories {
         jcenter()
